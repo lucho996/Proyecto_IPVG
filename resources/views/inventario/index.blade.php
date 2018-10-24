@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
-    <title>Personal</title>
+    <title>Productos</title>
     <style>
 		body {
 			width: 1000px;
@@ -25,8 +25,8 @@
                     </div>
                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                          <li class="active"><a href="/personal">Todos</a></li>
-                          <li><a href="/personal/create">Nuevo</a></li>
+                          <li class="active"><a href="/inventario">Todos</a></li>
+                          <li><a href="/inventario/create">Nuevo</a></li>
                       </ul>
                   </div>
               </div>
@@ -34,29 +34,31 @@
 
           <div class="panel panel-success">
                 <div class="panel-heading">
-                    <h4>Lista de Personal</h4>
+                    <h4>Lista de Productos</h4>
                 </div>
       
                 <div class="panel-body">
                   <table class="table ">
                       <thead>
                           <tr>
-                              <th>Rut</th>
+                              <th>Id</th>
                               <th>Nombre</th>
-                              <th>Apellido</th>
+                              <th>Ubicación</th>
+                              <th>Estado</th>
                               <th>Acciones</th>
                           </tr>
                       </thead>
                       <tbody>
-                          @foreach($personal as $personal)
+                          @foreach($inventario as $inventario)
                               <tr>
-                                  <td>{{ $personal->RUTP }}</td>
-                                  <td>{{ $personal->NOMBREP }}</td>
-                                  <td>{{ $personal->APELLIDOP }}</td>
+                                  <td>{{ $inventario->ID_INVENTARIO }}</td>
+                                  <td>{{ $inventario->NOMBRE }}</td>
+                                  <td>{{ $inventario->UBICACION }}</td>
+                                  <td>{{ $inventario->ESTADO }}</td>
                                   <td>
-                                      <a href="/personal/show/{{ $personal->RUTP }}"><span class="label label-info">Ver</span></a>
-                                      <a href="/personal/edit/{{ $personal->RUTP }}"><span class="label label-success">Editar</span></a>
-                                      <a href="{{ url('/personal/destroy',$personal->RUTP) }}"><span class="label label-danger">Eliminar</span></a>
+                                      <a href="/inventario/show/{{ $inventario->ID_INVENTARIO }}"><span class="label label-info">Ver</span></a>
+                                      <a href="/inventario/edit/{{ $inventario->ID_INVENTARIO }}"><span class="label label-success">Editar</span></a>
+                                      <a href="{{ url('/inventario/destroy',$inventario->ID_INVENTARIO) }}"><span class="label label-danger">Eliminar</span></a>
                                   </td>
                               </tr>
                           @endforeach

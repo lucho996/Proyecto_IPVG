@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Personal</title>
+	<title>Clientes</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
@@ -21,8 +21,8 @@
   		<div class="container-fluid">
     		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       			<ul class="nav navbar-nav">
-        			<li><a href="/personal">Todos</a></li>
-        			<li class="active"><a href="/personal/create">Nuevo</a></li>
+        			<li><a href="/clientes">Todos</a></li>
+        			<li class="active"><a href="/clientes/create">Nuevo</a></li>
         		</ul>
         	</div>
         </div>
@@ -30,7 +30,7 @@
 
 	<div class="panel panel-success">
   		<div class="panel-heading">
-  			<h4>Nuevo personal</h4>
+  			<h4>Nuevo Cliente</h4>
   		</div>
 
   		<div class="panel-body">
@@ -39,35 +39,30 @@
 					<input type="text" name="rut" placeholder="Rut" class="form-control" onkeypress='return validaNumericos(event)' maxlength="9" minlength="9" required>
                 </p>
                 <p>
-                    <input type="text" name="nombre" placeholder="Nombre" maxlength="30" class="form-control" onkeypress='return validar(event)' required>
+                    <input type="text" name="nombre" placeholder="Nombre" maxlength="50" class="form-control" onkeypress='return validar(event)' required>
                 </p>
 			    <p>
-					<input type="text" name="apellido" placeholder="Apellido" maxlength="30" class="form-control" onkeypress='return validar(event)' required>
+					<input type="text" name="direccion" placeholder="Dirección" maxlength="50" class="form-control" required>
                 </p>	
                 <p>
-                    <input type="text" name="telefono" placeholder="Telefono" maxlength="9" minlength="9" class="form-control" onkeypress='return validaNumericos(event)'>
+                    <input type="text" name="ciudad" placeholder="Ciudad" maxlength="50" class="form-control" onkeypress='return validar(event)'>
                 </p>
                 <p>
-                    <input type="text" name="correo" placeholder="Correo" class="form-control">
+                    <input type="text" name="comuna" placeholder="Comuna" class="form-control" onkeypress='return validar(event)'>
                 </p>
                 <p>
-                    <input type="text" name="hh" placeholder="Hora Hombre" class="form-control" onkeypress='return validaNumericos(event)' required>
+                    <input type="text" name="giro" placeholder="Giro" class="form-control" onkeypress='return validar(event)' required>
                 </p>
                 <p>
-                    <input type="date" name="fecha_nac" class="form-control" required>
-                </p>
-                <p>
-                    <input type="text" name="direccion" placeholder="Dirección" class="form-control" required>
+					<input type="text" name="telefono" placeholder="Telefono" maxlength="9" minlength="9" class="form-control" onkeypress='return validaNumericos(event)'>
+
                 </p>
                 <p>
                     <select name="tipo" class="form-control" >
 
-                                <option>Taller</option>
+                                <option>Fijo</option>
                                 
-                                <option>Abastible</option>
-                                
-                                <option>Petroquim</option>
-                                
+                                <option>Temporal</option>       
                     </select>
                 </p>
                 <p>

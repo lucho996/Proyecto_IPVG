@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Personal</title>
+	<title>Producto</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
@@ -21,8 +21,8 @@
   		<div class="container-fluid">
     		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       			<ul class="nav navbar-nav">
-        			<li><a href="/personal">Todos</a></li>
-        			<li class="active"><a href="/personal/create">Nuevo</a></li>
+        			<li><a href="/producto">Todos</a></li>
+        			<li class="active"><a href="/producto/create">Nuevo</a></li>
         		</ul>
         	</div>
         </div>
@@ -30,23 +30,21 @@
 
 	<div class="panel panel-success">
   		<div class="panel-heading">
-  			<h4>Nuevo personal</h4>
+  			<h4>Nuevo Producto</h4>
   		</div>
 
   		<div class="panel-body">
   			<form  action="store" method="post">
+				  
 				<p>
-					<input type="text" name="rut" placeholder="Rut" class="form-control" onkeypress='return validaNumericos(event)' maxlength="9" minlength="9" required>
+					<input type="text" name="descripcion" placeholder="Descripción" class="form-control" maxlength="50"  required>
                 </p>
                 <p>
-                    <input type="text" name="nombre" placeholder="Nombre" maxlength="30" class="form-control" onkeypress='return validar(event)' required>
+                    <input type="text" name="codigo_pet_oferta" placeholder="Cod. Petición" maxlength="11" class="form-control" onkeypress='return validarNumericos(event)' required>
                 </p>
-			    <p>
-					<input type="text" name="apellido" placeholder="Apellido" maxlength="30" class="form-control" onkeypress='return validar(event)' required>
-                </p>	
-                <p>
-                    <input type="text" name="telefono" placeholder="Telefono" maxlength="9" minlength="9" class="form-control" onkeypress='return validaNumericos(event)'>
-                </p>
+				<p>
+					<input type="file" name="plano" id="plano">
+				</p>
                 <p>
                     <input type="text" name="correo" placeholder="Correo" class="form-control">
                 </p>
@@ -58,7 +56,17 @@
                 </p>
                 <p>
                     <input type="text" name="direccion" placeholder="Dirección" class="form-control" required>
-                </p>
+				</p>
+				<p>
+						<select name="tipo" class="form-control" >
+
+                                <option>Emergencia</option>
+                                
+                                <option>Normal</option>
+                            
+                                
+					</select>					
+				</p>
                 <p>
                     <select name="tipo" class="form-control" >
 

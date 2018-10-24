@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
-    <title>Personal</title>
+    <title>Clientes</title>
     <style>
 		body {
 			width: 1000px;
@@ -25,8 +25,8 @@
                     </div>
                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                          <li class="active"><a href="/personal">Todos</a></li>
-                          <li><a href="/personal/create">Nuevo</a></li>
+                          <li class="active"><a href="/clientes">Todos</a></li>
+                          <li><a href="/clientes/create">Nuevo</a></li>
                       </ul>
                   </div>
               </div>
@@ -34,7 +34,7 @@
 
           <div class="panel panel-success">
                 <div class="panel-heading">
-                    <h4>Lista de Personal</h4>
+                    <h4>Lista de Clientes</h4>
                 </div>
       
                 <div class="panel-body">
@@ -43,20 +43,20 @@
                           <tr>
                               <th>Rut</th>
                               <th>Nombre</th>
-                              <th>Apellido</th>
+                              <th>Tipo</th>
                               <th>Acciones</th>
                           </tr>
                       </thead>
                       <tbody>
-                          @foreach($personal as $personal)
+                          @foreach($clientes as $clientes)
                               <tr>
-                                  <td>{{ $personal->RUTP }}</td>
-                                  <td>{{ $personal->NOMBREP }}</td>
-                                  <td>{{ $personal->APELLIDOP }}</td>
+                                  <td>{{ $clientes->RUT_CLIENTE }}</td>
+                                  <td>{{ $clientes->NOMBRE_COMPLETO }}</td>
+                                  <td>{{ $clientes->TIPO }}</td>
                                   <td>
-                                      <a href="/personal/show/{{ $personal->RUTP }}"><span class="label label-info">Ver</span></a>
-                                      <a href="/personal/edit/{{ $personal->RUTP }}"><span class="label label-success">Editar</span></a>
-                                      <a href="{{ url('/personal/destroy',$personal->RUTP) }}"><span class="label label-danger">Eliminar</span></a>
+                                      <a href="/clientes/show/{{ $clientes->RUTP }}"><span class="label label-info">Ver</span></a>
+                                      <a href="/clientes/edit/{{ $clientes->RUTP }}"><span class="label label-success">Editar</span></a>
+                                      <a href="{{ url('/clientes/destroy',$clientes->RUTP) }}"><span class="label label-danger">Eliminar</span></a>
                                   </td>
                               </tr>
                           @endforeach

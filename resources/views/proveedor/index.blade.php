@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
-    <title>Personal</title>
+    <title>Proveedor</title>
     <style>
 		body {
 			width: 1000px;
@@ -25,8 +25,8 @@
                     </div>
                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                          <li class="active"><a href="/personal">Todos</a></li>
-                          <li><a href="/personal/create">Nuevo</a></li>
+                          <li class="active"><a href="/proveedor">Todos</a></li>
+                          <li><a href="/proveedor/create">Nuevo</a></li>
                       </ul>
                   </div>
               </div>
@@ -34,7 +34,7 @@
 
           <div class="panel panel-success">
                 <div class="panel-heading">
-                    <h4>Lista de Personal</h4>
+                    <h4>Lista de Proveedores</h4>
                 </div>
       
                 <div class="panel-body">
@@ -43,20 +43,19 @@
                           <tr>
                               <th>Rut</th>
                               <th>Nombre</th>
-                              <th>Apellido</th>
                               <th>Acciones</th>
                           </tr>
                       </thead>
                       <tbody>
-                          @foreach($personal as $personal)
+                          @foreach($proveedor as $proveedor)
                               <tr>
-                                  <td>{{ $personal->RUTP }}</td>
-                                  <td>{{ $personal->NOMBREP }}</td>
-                                  <td>{{ $personal->APELLIDOP }}</td>
+                                  <td>{{ $proveedor->RUT }}</td>
+                                  <td>{{ $proveedor->NOMBRE }}</td>
+
                                   <td>
-                                      <a href="/personal/show/{{ $personal->RUTP }}"><span class="label label-info">Ver</span></a>
-                                      <a href="/personal/edit/{{ $personal->RUTP }}"><span class="label label-success">Editar</span></a>
-                                      <a href="{{ url('/personal/destroy',$personal->RUTP) }}"><span class="label label-danger">Eliminar</span></a>
+                                      <a href="/proveedor/show/{{ $proveedor->RUT }}"><span class="label label-info">Ver</span></a>
+                                      <a href="/proveedor/edit/{{ $proveedor->RUT }}"><span class="label label-success">Editar</span></a>
+                                      <a href="{{ url('/proveedor/destroy',$proveedor->RUT) }}"><span class="label label-danger">Eliminar</span></a>
                                   </td>
                               </tr>
                           @endforeach

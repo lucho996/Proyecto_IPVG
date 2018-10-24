@@ -24,6 +24,7 @@ class CreateProductoTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('ID_PRODUCTO');
+            $table->integer('RUT_CLIENTE')->nullable()->default(null)->unsigned();
             $table->string('DESCRIPCION', 50)->nullable()->default(null);
             $table->integer('COD_PETICION_OFERTA')->nullable()->default(null);
             $table->string('TIPO_PRODUCTO', 20)->nullable()->default(null);
@@ -35,6 +36,15 @@ class CreateProductoTable extends Migration
             $table->integer('UTILIDADES')->nullable()->default(null);
             $table->integer('GASTOS_GENERALES')->nullable()->default(null);
             $table->integer('TOTAL')->nullable()->default(null);
+
+
+            $table->index(["RUT_CLIENTE"], 'FK_solicita');
+
+
+            $table->foreign('RUT_CLIENTE', 'FK_solicita')
+            ->references('RUT_CLIENTE')->on('clientes')
+            ->onDelete('restrict')
+            ->onUpdate('restrict');
         });
     }
 

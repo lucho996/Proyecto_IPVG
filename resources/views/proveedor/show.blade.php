@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Personal</title>
+	<title>Proveedor</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
@@ -35,7 +35,7 @@
 
   		<div class="panel-body">
   			<p>
-			  Nombre: <strong>{{$personal -> 'NOMBREP'}}</strong>
+			  Nombre: <strong>{{$personal -> 'NOMBRE'}}</strong>
   			</p>
   			<p>
   				Apellido: <strong>asd</strong>
