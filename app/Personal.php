@@ -25,7 +25,7 @@ class Personal extends Model
      */
     protected $table = 'personal';
     //public $timestamps = false;
-
+    public $timestamps = false;
     /**
      * The primary key for the model.
      * 
@@ -36,7 +36,7 @@ class Personal extends Model
     /**
      * @var array
      */
-    protected $fillable = ['NOMBREP', 'APELLIDOP', 'TELEFONOP', 'CORREOP', 'HORAHOMBRE', 'FECHANACIMIENTO', 'DIRECCION', 'TIPO'];
+    protected $fillable = ['RUTP','NOMBREP', 'APELLIDOP', 'TELEFONOP', 'CORREOP', 'HORAHOMBRE', 'FECHANACIMIENTO', 'DIRECCION', 'TIPO'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

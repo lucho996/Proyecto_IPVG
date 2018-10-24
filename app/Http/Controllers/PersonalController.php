@@ -37,24 +37,22 @@ class PersonalController extends Controller
      */
     public function store(Request $request)
     {
-        $persona = new Personal;
-        $persona->RUTP = Input::get('rut');
-        $persona->NOMBREP = Input::get('nombre');
-        $persona->APELLIDOP = Input::get('apellido');
-        $persona->TELEFONOP = Input::get('telefono');
-        $persona->CORREOP = Input::get('correo');
-        $persona->HORAHOMBRE = Input::get('hh');
-        $persona->FECHANACIMIENTO = Input::get('fecha_nac');
-        $persona->DIRECCION = Input::get('direccion');
+        #dd($request->all());
+        $personal = new Personal;
+        $personal->RUTP =$request->Input('rut');
+        $personal->NOMBREP =$request->Input('nombre');
+        $personal->APELLIDOP =$request->Input('apellido');
+        $personal->TELEFONOP =$request->Input('telefono');
+        $personal->CORREOP =$request->Input('correo');
+        $personal->HORAHOMBRE =$request->Input('hh');
+        $personal->FECHANACIMIENTO =$request->Input('fecha_nac');
+        $personal->DIRECCION =$request->Input('direccion');
+        $personal->TIPO =$request->Input('tipo');
+        $personal->save();
+
+        return redirect()->route('personal.index')->with('success','Registro creado satisfactoriamente');
        // $persona->TIPO = Select::get('tipo');
-        if($persona->save()){
-            Session::flash('message', 'Guardado Con Exito');
-            Session::flash('class', 'success');
-        }else{
-            Session::flash('message', 'Ocurrio Un Error');
-            Session::flash('class', 'danger');
-        }
-        return Redirect::to('personal/create');
+        
     }
 
     /**
@@ -63,10 +61,10 @@ class PersonalController extends Controller
      * @param  \App\Personal  $RUTP
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show()
     {
-        $persona = Personal::find('RUTP');
-		return View('personal.show')->with('personal',$persona);
+        #$persona = Personal::find('RUTP');
+		#return View('personal.show')->with('personal',$persona);
     }
 
     /**
