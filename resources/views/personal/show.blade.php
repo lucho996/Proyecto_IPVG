@@ -34,12 +34,16 @@
   		</div>
 
   		<div class="panel-body">
+			  
+				  
+			  
   			<p>
-			  Nombre: <strong>{{$personal -> 'NOMBREP'}}</strong>
+			  Nombre: <strong>{{$personal->NOMBREP}}</strong>
   			</p>
   			<p>
   				Apellido: <strong>asd</strong>
-  			</p>
+			  </p>
+			  
 
         <a href="/personal" class="btn btn-default">Regresar</a>
 		</div>

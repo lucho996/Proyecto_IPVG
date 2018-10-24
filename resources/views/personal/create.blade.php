@@ -34,7 +34,8 @@
   		</div>
 
   		<div class="panel-body">
-  			<form  action="store" method="post">
+		  <form  action="{{ action('PersonalController@store')}}" method="post">
+				{{ csrf_field() }}
 				<p>
 					<input type="text" name="rut" placeholder="Rut" class="form-control" onkeypress='return validaNumericos(event)' maxlength="9" minlength="9" required>
                 </p>
