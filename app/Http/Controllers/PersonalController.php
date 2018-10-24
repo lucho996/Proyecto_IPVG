@@ -14,7 +14,9 @@ class PersonalController extends Controller
      */
     public function index()
     {
-     
+        
+        $personal = Personal::orderBy('RUTP','DESC')->get();
+        return view('personal.index')->with('personal',$personal);
     }
 
     /**
@@ -24,7 +26,7 @@ class PersonalController extends Controller
      */
     public function create()
     {
-        //
+        return view('personal.create');
     }
 
     /**
@@ -35,18 +37,36 @@ class PersonalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $persona = new Personal;
+        $persona->RUTP = Input::get('rut');
+        $persona->NOMBREP = Input::get('nombre');
+        $persona->APELLIDOP = Input::get('apellido');
+        $persona->TELEFONOP = Input::get('telefono');
+        $persona->CORREOP = Input::get('correo');
+        $persona->HORAHOMBRE = Input::get('hh');
+        $persona->FECHANACIMIENTO = Input::get('fecha_nac');
+        $persona->DIRECCION = Input::get('direccion');
+       // $persona->TIPO = Select::get('tipo');
+        if($persona->save()){
+            Session::flash('message', 'Guardado Con Exito');
+            Session::flash('class', 'success');
+        }else{
+            Session::flash('message', 'Ocurrio Un Error');
+            Session::flash('class', 'danger');
+        }
+        return Redirect::to('personal/create');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Personal  $personal
+     * @param  \App\Personal  $RUTP
      * @return \Illuminate\Http\Response
      */
-    public function show(Personal $personal)
+    public function show(Request $request)
     {
-        //
+        $persona = Personal::find('RUTP');
+		return View('personal.show')->with('personal',$persona);
     }
 
     /**

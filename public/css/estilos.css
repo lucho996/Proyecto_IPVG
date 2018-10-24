@@ -9,26 +9,33 @@ header{
 }
 header nav{
     width: 100%;
-    max-width: 1080px;
+    position: relative;
+    z-index: 99999999999999999999999999999999999999999999999999999;
+    max-width: 1000px;
     margin: 0px auto;
-    background: #024959;
-    
+    background: #cccccc;
+    opacity: 0.7;
+    border-radius: 20px 20px 20px 20px;
 
     
 }
 
 .menu_bar{
     display: none;
+    position: relative;
+    z-index: 99999999999999999999999999999999999999999999999999999;
 }
 header nav ul{
     overflow: hidden;
     list-style:none;
+    position: relative;
+    z-index: 99999999999999999999999999999999999999999999999999999;
 }
 header nav ul li{
     float: left;
 }
 header nav ul li a{
-    color: #fff;
+    color: rgb(39, 39, 39);
     padding: 15px;
     display: block;
     text-decoration: none; 
@@ -38,7 +45,7 @@ header nav ul li span{
     margin-right:10px; 
 }
 header nav ul li a:hover{
-    background: #037E8C;
+    background: rgb(165, 165, 165);
 }
 
 
@@ -47,30 +54,36 @@ header nav ul li a:hover{
         width: 30%;
         height: 100%;
         left: -100%;
-        margin: 0%;
-        position: fixed;
+        position: relative;
+        z-index: 9999999999999999999999999999999999999999999999999;
     }
     header nav ul li{
         display: block;
         float: none;
         border-bottom:1px solid rgba(255,255,255, .5);
+        position: relative;
+        z-index: 99999999999999999999999999999999999999999999999999999;
     }
     .menu_bar{
         display: block;
         width: 100%;
+        position: relative;
+        z-index: 99999999999999999999999999999999999999999999999999999;
         background: #ccc;
     }
     .menu_bar .bt_menu{
         display: block;
         padding: 20px;
-        background: #024959;
-        color: #fff;
+        background: #bcbdbd;
+        color: rgb(39, 39, 39);
         text-decoration: none;
         font-weight: bold;
         font-size: 25px;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
+        position: relative;
+        z-index: 99999999999999999999999999999999999999999999999999999;
 
     }
 

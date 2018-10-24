@@ -21,4 +21,11 @@ Route::get('/contacto', function () {
     return view('contacto');
 });
 
+Route::post('/personal/store', 'PersonalController@store');
+Route::post('/personal/update/{RUTP}', 'PersonalController@update');
+Route::get('/personal/destroy/{RUTP}', 'PersonalController@destroy');
+
+
+Route::resource('personal', 'PersonalController');
+
 

@@ -24,6 +24,7 @@ class Personal extends Model
      * @var string
      */
     protected $table = 'personal';
+    //public $timestamps = false;
 
     /**
      * The primary key for the model.
