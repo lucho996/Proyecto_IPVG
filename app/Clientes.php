@@ -22,7 +22,7 @@ class Clientes extends Model
      * @var string
      */
     protected $primaryKey = 'RUT_CLIENTE';
-
+    public $timestamps = false;
     /**
      * @var array
      */

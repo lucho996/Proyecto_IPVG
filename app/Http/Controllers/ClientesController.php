@@ -36,7 +36,18 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cliente = new Clientes;
+        $cliente->RUT_CLIENTE =$request->Input('rut');
+        $cliente->NOMBRE_COMPLETO =$request->Input('nombre');
+        $cliente->DIRECCION =$request->Input('direccion');
+        $cliente->CIUDAD =$request->Input('ciudad');
+        $cliente->COMUNA =$request->Input('comuna');
+        $cliente->GIRO =$request->Input('giro');
+        $cliente->TELEFONO =$request->Input('telefono');
+        $cliente->TIPO =$request->Input('tipo');
+        $cliente->save();
+
+        return redirect()->route('clientes.index')->with('success','Registro creado satisfactoriamente');
     }
 
     /**

@@ -30,11 +30,12 @@
 
 	<div class="panel panel-success">
   		<div class="panel-heading">
-  			<h4>Nuevo Proveedor</h4>
+  			<h4>Ingresar Nuevo Proveedor</h4>
   		</div>
 
   		<div class="panel-body">
-  			<form  action="store" method="post">
+  			<form  action="{{ action('ProveedorController@store')}}" method="post">
+					{{ csrf_field() }}
 				<p>
 					<input type="text" name="rut" placeholder="Rut" maxlength="9" minlength="9" class="form-control" onkeypress='return validaNumericos(event)' required>
 				</p>

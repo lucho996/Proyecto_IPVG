@@ -34,7 +34,8 @@
   		</div>
 
   		<div class="panel-body">
-  			<form  action="store" method="post">
+  			<form  action="{{ action('InventarioController@store')}}" method="post">
+					{{ csrf_field() }}
                 <p>
                     <input type="text" name="nombre" placeholder="Nombre" maxlength="50" class="form-control" onkeypress='return validar(event)' required>
                 </p>

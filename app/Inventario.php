@@ -20,7 +20,7 @@ class Inventario extends Model
      * @var string
      */
     protected $table = 'inventario';
-
+    public $timestamps = false;
     /**
      * The primary key for the model.
      * 

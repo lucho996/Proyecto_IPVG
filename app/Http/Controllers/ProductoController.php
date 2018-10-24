@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Inventario;
+use App\Producto;
 use Illuminate\Http\Request;
 
-class InventarioController extends Controller
+class ProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        $inventario = Inventario::orderBy('NOMBRE','DESC')->get();
-        return view('inventario.index')->with('inventario',$inventario);
+        
     }
 
     /**
@@ -25,7 +23,7 @@ class InventarioController extends Controller
      */
     public function create()
     {
-        return view('inventario.create');
+        //
     }
 
     /**
@@ -36,25 +34,16 @@ class InventarioController extends Controller
      */
     public function store(Request $request)
     {
-        $inventario = new Inventario;
-        $inventario->NOMBRE =$request->Input('nombre');
-        $inventario->MARCA =$request->Input('marca');
-        $inventario->UBICACION =$request->Input('ubicacion');
-        $inventario->VALOR =$request->Input('valor');
-        $inventario->ESTADO =$request->Input('estado');
-       
-        $inventario->save();
-
-        return redirect()->route('inventario.index')->with('success','Registro creado satisfactoriamente');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Inventario  $inventario
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Inventario $inventario)
+    public function show($id)
     {
         //
     }
@@ -62,10 +51,10 @@ class InventarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Inventario  $inventario
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Inventario $inventario)
+    public function edit($id)
     {
         //
     }
@@ -74,10 +63,10 @@ class InventarioController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Inventario  $inventario
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inventario $inventario)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -85,10 +74,10 @@ class InventarioController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Inventario  $inventario
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Inventario $inventario)
+    public function destroy($id)
     {
         //
     }

@@ -20,7 +20,7 @@ class Proveedor extends Model
      * @var string
      */
     protected $table = 'proveedor';
-
+    public $timestamps = false;
     /**
      * The primary key for the model.
      * 

@@ -34,7 +34,7 @@
 
           <div class="panel panel-success">
                 <div class="panel-heading">
-                    <h4>Lista de Productos</h4>
+                    <h4>Lista de Inventario</h4>
                 </div>
       
                 <div class="panel-body">

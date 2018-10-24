@@ -36,7 +36,17 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $proveedor = new Proveedor;
+        $proveedor->RUT =$request->Input('rut');
+        $proveedor->NOMBRE =$request->Input('nombre');
+        $proveedor->DIRECCION =$request->Input('direccion');
+        $proveedor->CIUDAD =$request->Input('ciudad');
+        $proveedor->TELEFONO =$request->Input('telefono');
+        $proveedor->CORREO =$request->Input('correo');
+       
+        $proveedor->save();
+
+        return redirect()->route('proveedor.index')->with('success','Registro creado satisfactoriamente');
     }
 
     /**
