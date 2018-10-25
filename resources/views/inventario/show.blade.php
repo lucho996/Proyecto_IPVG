@@ -30,18 +30,32 @@
 
 	<div class="panel panel-success">
   		<div class="panel-heading">
-  			<h4>Información del usuario</h4>
+  			<h4>Información de inventario</h4>
   		</div>
 
   		<div class="panel-body">
-  			<p>
-			  Nombre: <strong>{{$personal -> 'NOMBREP'}}</strong>
-  			</p>
-  			<p>
-  				Apellido: <strong>asd</strong>
-  			</p>
+  			
+				<p>
+						CODIGO : <strong>{{$inventario ->ID_INVENTARIO}}</strong>
+					</p>
+					<p>
+						NOMBRE: <strong>{{$inventario ->NOMBRE}}</strong>
+					</p>
+					<p>
+						MARCA: <strong>{{$inventario ->MARCA}}</strong>
+					</p>
+					<p>
+						UBICACION: <strong>{{$inventario ->UBICACION}}</strong>
+					</p>
+					<p>
+						VALOR: <strong>{{$inventario ->VALOR}}</strong>
+					</p>
+					<p>
+						ESTADO: <strong>{{$inventario ->ESTADO}}</strong>
+					</p>
+	
 
-        <a href="/personal" class="btn btn-default">Regresar</a>
+        <a href="/inventario" class="btn btn-default">Regresar</a>
 		</div>
 	</div>
 </body>

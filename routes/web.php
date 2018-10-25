@@ -28,18 +28,25 @@ Route::resource('personal', 'PersonalController');
 
 //Rutas para el cliente
 Route::post('/clientes/store', 'ClientesController@store');
-Route::post('/clientes/update/{RUTP}', 'ClientesController@update');
-Route::get('/clientes/destroy/{RUTP}', 'ClientesController@destroy');
-Route::resource('clientes', 'ClientesController');
 
+Route::get('/clientes/destroy/{RUT_CLIENTE}', 'ClientesController@destroy');
+
+Route::get('/clientes/edit/{RUT_CLIENTE}', 'ClientesController@edit');
+Route::post('/clientes/edit/{RUT_CLIENTE}', 'ClientesController@edit');
+
+Route::resource('clientes', 'ClientesController');
+Route::get('/clientes/show/{RUT_CLIENTE}', 'ClientesController@show');
 //Rutas para el inventario
 Route::post('/inventario/store', 'InventarioController@store');
-Route::post('/inventario/update/{RUTP}', 'InventarioController@update');
-Route::get('/inventario/destroy/{RUTP}', 'InventarioController@destroy');
+Route::post('/inventario/update/{ID_INVENTARIO}', 'InventarioController@update');
+Route::get('/inventario/destroy/{ID_INVENTARIO}', 'InventarioController@destroy');
+Route::get('/inventario/edit/{ID_INVENTARIO}', 'InventarioController@edit');
+Route::post('/inventario/edit/{ID_INVENTARIO}', 'InventarioController@edit');
 Route::resource('inventario', 'InventarioController');
-
+Route::get('/inventario/show/{ID_INVENTARIO}', 'InventarioController@show');
 //Rutas para el proveedor
 Route::post('/proveedor/store', 'ProveedorController@store');
 Route::post('/proveedor/update/{RUTP}', 'ProveedorController@update');
 Route::get('/proveedor/destroy/{RUTP}', 'ProveedorController@destroy');
 Route::resource('proveedor', 'ProveedorController');
+

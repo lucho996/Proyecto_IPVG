@@ -34,14 +34,30 @@
   		</div>
 
   		<div class="panel-body">
-  			<p>
-			  Nombre: <strong>{{$personal -> 'NOMBREP'}}</strong>
-  			</p>
-  			<p>
-  				Apellido: <strong>asd</strong>
-  			</p>
+				
+				
+				<p>
+					RUT: <strong>{{$clientes ->RUT_CLIENTE}}</strong>
+				</p>
+				<p>
+					NOMBRE: <strong>{{$clientes ->NOMBRE_COMPLETO}}</strong>
+				</p>
+				<p>
+					DIRECCION: <strong>{{$clientes ->DIRECCION}}</strong>
+				</p>
+				<p>
+					CIUDAD: <strong>{{$clientes ->CIUDAD}}</strong>
+				</p>
+				<p>
+					COMUNA: <strong>{{$clientes ->COMUNA}}</strong>
+				</p>
+				<p>
+					GIRO: <strong>{{$clientes ->GIRO}}</strong>
+				</p>
 
-        <a href="/personal" class="btn btn-default">Regresar</a>
+
+  			
+        <a href="/clientes" class="btn btn-default">Regresar</a>
 		</div>
 	</div>
 </body>

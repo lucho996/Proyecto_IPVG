@@ -26,6 +26,6 @@ class Clientes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['NOMBRE_COMPLETO', 'DIRECCION', 'CIUDAD', 'COMUNA', 'GIRO', 'TELEFONO', 'TIPO'];
+    protected $fillable = ['RUT_CLIENTE','NOMBRE_COMPLETO', 'DIRECCION', 'CIUDAD', 'COMUNA', 'GIRO', 'TELEFONO', 'TIPO'];
 
 }
