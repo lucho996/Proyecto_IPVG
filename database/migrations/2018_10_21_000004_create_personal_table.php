@@ -23,7 +23,7 @@ class CreatePersonalTable extends Migration
         if (Schema::hasTable($this->set_schema_table)) return;
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->integer('RUTP')->unsigned();
+            $table->integer('RUTP')->unsigned()->unique();
             $table->primary('RUTP');
             $table->string('NOMBREP', 30)->nullable()->default(null);
             $table->string('APELLIDOP', 30)->nullable()->default(null);

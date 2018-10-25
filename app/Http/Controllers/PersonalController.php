@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Personal;
 use Illuminate\Http\Request;
+use Session;
+use App\Clientes;
 
 class PersonalController extends Controller
 {
@@ -15,8 +17,9 @@ class PersonalController extends Controller
     public function index()
     {
         
-        $personal = Personal::orderBy('RUTP','DESC')->get();
-        return view('personal.index')->with('personal',$personal);
+        $personal = Personal::all();
+        $clientes = Clientes::all();
+        return view('personal.index')->with('personal',$personal)->with('clientes',$clientes);
     }
 
     /**
@@ -37,6 +40,7 @@ class PersonalController extends Controller
      */
     public function store(Request $request)
     {
+        
         #dd($request->all());
         $personal = new Personal;
         $personal->RUTP =$request->Input('rut');
@@ -48,11 +52,21 @@ class PersonalController extends Controller
         $personal->FECHANACIMIENTO =$request->Input('fecha_nac');
         $personal->DIRECCION =$request->Input('direccion');
         $personal->TIPO =$request->Input('tipo');
-        $personal->save();
-
-        return redirect()->route('personal.index')->with('success','Registro creado satisfactoriamente');
+        try{
+        if($personal->save()){
+            Session::flash('message','Guardado Correctamente');
+            Session::flash('class','success');
+        }else{
+            Session::flash('message','Ha ocurrido un error');
+            Session::flash('class','danger');
+        }
+        }catch(\Exception $e) {
+        Session::flash('message','El RUT ingresado ya se encuentra registrado.');
+        Session::flash('class','danger');
+        }
+        return redirect()->route('personal.create');
        // $persona->TIPO = Select::get('tipo');
-        
+    
     }
 
     /**

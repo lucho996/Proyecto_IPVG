@@ -7,19 +7,20 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
 	<style>
-		body {
-			width: 450px;
-			margin: 50px auto;
-		}
 		.badge {
 			float: right;
 		}
 	</style>
 </head>
+<div style="width: 1100px;
+margin: 0px auto;
+background: #cccccc;
+padding: 35px;">
+</div>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
   		<div class="container-fluid">
-    		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    		<div id="bs-example-navbar-collapse-1">
       			<ul class="nav navbar-nav">
         			<li><a href="#">Todos</a></li>
         			<li><a href="#">Nuevo</a></li>

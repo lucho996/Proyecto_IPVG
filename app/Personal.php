@@ -14,6 +14,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $FECHANACIMIENTO
  * @property string $DIRECCION
  * @property string $TIPO
+ * @property CargoPersonal[] $cargoPersonals
+ * @property ManoDeObra[] $manoDeObras
  * @property Usuario $usuario
  */
 class Personal extends Model
@@ -24,8 +26,8 @@ class Personal extends Model
      * @var string
      */
     protected $table = 'personal';
-    //public $timestamps = false;
-    public $timestamps = false;
+    public $timestamps =false;
+
     /**
      * The primary key for the model.
      * 
@@ -34,9 +36,32 @@ class Personal extends Model
     protected $primaryKey = 'RUTP';
 
     /**
+     * Indicates if the IDs are auto-incrementing.
+     * 
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
      * @var array
      */
-    protected $fillable = ['RUTP','NOMBREP', 'APELLIDOP', 'TELEFONOP', 'CORREOP', 'HORAHOMBRE', 'FECHANACIMIENTO', 'DIRECCION', 'TIPO'];
+    protected $fillable = ['NOMBREP', 'APELLIDOP', 'TELEFONOP', 'CORREOP', 'HORAHOMBRE', 'FECHANACIMIENTO', 'DIRECCION', 'TIPO'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function cargoPersonals()
+    {
+        return $this->hasMany('App\CargoPersonal', 'RUTP', 'RUTP');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function manoDeObras()
+    {
+        return $this->hasMany('App\ManoDeObra', 'RUTP', 'RUTP');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

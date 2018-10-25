@@ -3,23 +3,27 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Producto</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-
 	<style>
-		body {
-			width: 1000px;
-			margin: 50px auto;
-		}
+
 		.badge {
 			float: right;
 		}
 	</style>
 </head>
-<body>
+<div style="width: 1100px;
+margin: 0px auto;
+background: #cccccc;
+padding: 35px;">
+</div>
+<body >
+	<div style="width: 1100px; margin:20px auto;">
+		<div style="width: 200px; float:left;  position:relative;">
+		@include('intranet.menu')
+		</div>
+	<div style="width: 850px; float: right; position:relative;"> 
 	<nav class="navbar navbar-default" role="navigation">
   		<div class="container-fluid">
-    		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    		<div  id="bs-example-navbar-collapse-1">
       			<ul class="nav navbar-nav">
         			<li><a href="/producto">Todos</a></li>
         			<li class="active"><a href="/producto/create">Nuevo</a></li>
@@ -34,8 +38,24 @@
   		</div>
 
   		<div class="panel-body">
-  			<form  action="store" method="post">
-				  
+			  <form  action="{{ action('ProductoController@store')}}" method="post">
+					{{ csrf_field() }}
+				<p>
+					<select name="cliente" class="form-control" >
+							@foreach($clientes as $cliente)
+								<option value="{{$cliente->RUT_CLIENTE}}">{{$cliente->NOMBRE_COMPLETO}}</option>
+							@endforeach
+			
+					</select>				
+				</p>
+				<p>
+					</p>
+					<p>
+						<input type="text" name="fecha_resp_coti" placeholder="Fecha respuesta de cotización" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" id="fecha_llegada" class="form-control" required>
+					</p>
+					<p>
+						<input type="text" name="fecha_entrega" placeholder="Fecha entrega producto" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" id="fecha_llegada" class="form-control" required>
+					</p>
 				<p>
 					<input type="text" name="descripcion" placeholder="Descripción" class="form-control" maxlength="50"  required>
                 </p>
@@ -43,20 +63,9 @@
                     <input type="text" name="codigo_pet_oferta" placeholder="Cod. Petición" maxlength="11" class="form-control" onkeypress='return validarNumericos(event)' required>
                 </p>
 				<p>
-					<input type="file" name="plano" id="plano">
+					<input type="file" name="plano" id="plano" class="custom-file">
 				</p>
-                <p>
-                    <input type="text" name="correo" placeholder="Correo" class="form-control">
-                </p>
-                <p>
-                    <input type="text" name="hh" placeholder="Hora Hombre" class="form-control" onkeypress='return validaNumericos(event)' required>
-                </p>
-                <p>
-                    <input type="date" name="fecha_nac" class="form-control" required>
-                </p>
-                <p>
-                    <input type="text" name="direccion" placeholder="Dirección" class="form-control" required>
-				</p>
+
 				<p>
 						<select name="tipo" class="form-control" >
 
@@ -68,17 +77,6 @@
 					</select>					
 				</p>
                 <p>
-                    <select name="tipo" class="form-control" >
-
-                                <option>Taller</option>
-                                
-                                <option>Abastible</option>
-                                
-                                <option>Petroquim</option>
-                                
-                    </select>
-                </p>
-                <p>
 					<input type="submit" value="Guardar" class="btn btn-success">
 				</p>
 			</form>
@@ -88,6 +86,8 @@
 	@if(Session::has('message'))
 		<div class="alert alert-{{ Session::get('class') }}">{{ Session::get('message')}}</div>
 	@endif
+	</div>
+	</div>
 </body>
 <script type="text/javascript" src="{{ URL::asset('js/solo_num.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/solo_letras.js') }}"></script>

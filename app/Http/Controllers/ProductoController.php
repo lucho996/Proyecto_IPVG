@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Producto;
+use App\Clientes;
+use Session;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -13,8 +16,12 @@ class ProductoController extends Controller
      */
     public function index()
     {
+        $clientes = Clientes::all();
+        $producto = Producto::orderBy('ID_PRODUCTO','ASC')->get();
+        return view('producto.index')->with('producto',$producto);
         
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -23,7 +30,8 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+        $clientes = Clientes::all();
+        return view('producto.create')->with('clientes',$clientes);;
     }
 
     /**
@@ -34,7 +42,29 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $producto = new Producto;
+        $producto->RUT_CLIENTE =$request->Input('cliente');
+        $producto->DESCRIPCION =$request->Input('descripcion');
+        $producto->COD_PETICION_OFERTA =$request->Input('codigo_pet_oferta');
+        $producto->TIPO_PRODUCTO =$request->Input('tipo');
+        $producto->PLANO_PRODUCTO =$request->Input('plano');
+        $producto->FECHA_LLEGADA = Carbon::now();
+        $producto->FECHA_RESPUESTA_COTIZACION =$request->Input('fecha_resp_coti');
+        $producto->FECHA_DE_ENTREGA_PRODUCTO =$request->Input('fecha_entrega');
+        $producto->ESTADO = "Falta Cotización";
+        try{
+        if($producto->save()){
+            Session::flash('message','Guardado Correctamente');
+            Session::flash('class','success');
+        }else{
+            Session::flash('message','Ha ocurrido un error');
+            Session::flash('class','danger');
+        }
+        }catch(\Exception $e) {
+        Session::flash($e);
+        Session::flash('class','danger');
+        }
+        return redirect()->route('producto.create');
     }
 
     /**
@@ -45,7 +75,7 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
-        //
+        $clientes = Clientes;
     }
 
     /**

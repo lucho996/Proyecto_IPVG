@@ -20,7 +20,7 @@ class Equipos_y_o_herramientas extends Model
      * @var string
      */
     protected $primaryKey = 'ID_EH';
-
+    public $timestamps = false;
     /**
      * @var array
      */

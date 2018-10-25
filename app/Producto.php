@@ -35,7 +35,7 @@ class Producto extends Model
      * @var string
      */
     protected $table = 'producto';
-
+    public $timestamps = false;
     /**
      * The primary key for the model.
      * 

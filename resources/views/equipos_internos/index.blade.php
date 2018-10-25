@@ -28,8 +28,8 @@ padding: 35px;">
                     </div>
                   <div  id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                          <li class="active"><a href="/inventario">Todos</a></li>
-                          <li><a href="/inventario/create">Nuevo</a></li>
+                          <li class="active"><a href="/equipos_internos">Todos</a></li>
+                          <li><a href="/equipos_internos/create">Nuevo</a></li>
                       </ul>
                   </div>
               </div>
@@ -37,30 +37,32 @@ padding: 35px;">
 
           <div class="panel panel-success">
                 <div class="panel-heading">
-                    <h4>Lista de Inventario</h4>
+                    <h4>Lista de Equipo</h4>
                 </div>
       
                 <div class="panel-body">
                   <table class="table ">
                       <thead>
                           <tr>
-                              <th>Id</th>
-                              <th>Nombre</th>
-                              <th>Ubicación</th>
-                              <th>Estado</th>
+                              <th>Producto</th>
+                              <th>Equipo</th>
+                              <th>Unidad</th>
+                              <th>Cantidad</th>
+                              <th>Valor Total</th>
                               <th>Acciones</th>
                           </tr>
                       </thead>
                       <tbody>
-                          @foreach($inventario as $inventario)
+                          @foreach($equipos_i as $equipos_i)
                               <tr>
-                                  <td>{{ $inventario->ID_INVENTARIO }}</td>
-                                  <td>{{ $inventario->NOMBRE }}</td>
-                                  <td>{{ $inventario->UBICACION }}</td>
-                                  <td>{{ $inventario->ESTADO }}</td>
+                                  <td>{{ $equipos_i->ID_PRODUCTO}}</td>
+                                  <td>{{ $equipos_i->ID_INVENTARIO }}</td>
+                                  <td>{{ $equipos_i->UNIDAD_E }}</td>
+                                  <td>{{ $equipos_i->CANTIDAD_DIAS_E }}</td>
+                                  <td>{{ $equipos_i->VALOR_TOTAL_E }}</td>
                                   <td>
-                                      <a href="/inventario/show/{{ $inventario->ID_INVENTARIO }}"><span class="label label-info">Ver</span></a>
-                                      <a href="/inventario/edit/{{ $inventario->ID_INVENTARIO }}"><span class="label label-success">Editar</span></a>
+                                      <a href="/equipos_internos/show/{{ $equipos_i->ID_EH }}"><span class="label label-info">Ver</span></a>
+                                      <a href="/equipos_internos/edit/{{ $equipos_i->ID_EH }}"><span class="label label-success">Editar</span></a>
                                    </td>
                               </tr>
                           @endforeach

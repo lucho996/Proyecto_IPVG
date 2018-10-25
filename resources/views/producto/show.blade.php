@@ -19,7 +19,7 @@
 <body>
 	<nav class="navbar navbar-default" role="navigation">
   		<div class="container-fluid">
-    		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    		<div id="bs-example-navbar-collapse-1">
       			<ul class="nav navbar-nav">
         			<li><a href="#">Todos</a></li>
         			<li><a href="#">Nuevo</a></li>

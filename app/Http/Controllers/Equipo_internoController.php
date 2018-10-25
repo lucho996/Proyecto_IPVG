@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Equipos_y_o_herramientas;
+use App\Producto;
 use App\Inventario;
-use Illuminate\Http\Request;
 use Session;
+use Illuminate\Http\Request;
 
-class InventarioController extends Controller
+class Equipo_internoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +17,8 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        $inventario = Inventario::orderBy('NOMBRE','DESC')->get();
-        return view('inventario.index')->with('inventario',$inventario);
+        $equipos_i = Equipos_y_o_herramientas::all();
+        return view('equipos_internos.index')->with('equipos_i',$equipos_i);
     }
 
     /**
@@ -26,7 +28,9 @@ class InventarioController extends Controller
      */
     public function create()
     {
-        return view('inventario.create');
+        $inventario = Inventario::all();
+        $producto = Producto::all();
+        return view('equipos_internos.create')->with('inventario',$inventario)->with('producto',$producto);
     }
 
     /**
@@ -37,14 +41,14 @@ class InventarioController extends Controller
      */
     public function store(Request $request)
     {
-        $inventario = new Inventario;
-        $inventario->NOMBRE =$request->Input('nombre');
-        $inventario->MARCA =$request->Input('marca');
-        $inventario->UBICACION =$request->Input('ubicacion');
-        $inventario->VALOR =$request->Input('valor');
-        $inventario->ESTADO =$request->Input('estado');
+        $equipos_i = new Equipos_y_o_herramientas;
+        $equipos_i->ID_INVENTARIO =$request->Input('inventario');
+        $equipos_i->ID_PRODUCTO =$request->Input('producto');
+        $equipos_i->UNIDAD_E ="Dia";
+        $equipos_i->CANTIDAD_DIAS_E =$request->Input('cantidad');
+        $equipos_i->VALOR_TOTAL_E =$request->Input('valor');
         try{
-            if($inventario->save()){
+            if($equipos_i->save()){
                 Session::flash('message','Guardado Correctamente');
                 Session::flash('class','success');
             }else{
@@ -52,19 +56,19 @@ class InventarioController extends Controller
                 Session::flash('class','danger');
             }
             }catch(\Exception $e) {
-            Session::flash('message','Error al ingresar un producto.');
+            Session::flash('message',$e);
             Session::flash('class','danger');
             }
-            return redirect()->route('inventario.create');       
+            return redirect()->route('equipos_internos.create');     
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Inventario  $inventario
+     * @param  \App\Equipos_y_o_herramientas  $equipos_y_o_herramientas
      * @return \Illuminate\Http\Response
      */
-    public function show(Inventario $inventario)
+    public function show(Equipos_y_o_herramientas $equipos_y_o_herramientas)
     {
         //
     }
@@ -72,10 +76,10 @@ class InventarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Inventario  $inventario
+     * @param  \App\Equipos_y_o_herramientas  $equipos_y_o_herramientas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Inventario $inventario)
+    public function edit(Equipos_y_o_herramientas $equipos_y_o_herramientas)
     {
         //
     }
@@ -84,10 +88,10 @@ class InventarioController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Inventario  $inventario
+     * @param  \App\Equipos_y_o_herramientas  $equipos_y_o_herramientas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inventario $inventario)
+    public function update(Request $request, Equipos_y_o_herramientas $equipos_y_o_herramientas)
     {
         //
     }
@@ -95,10 +99,10 @@ class InventarioController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Inventario  $inventario
+     * @param  \App\Equipos_y_o_herramientas  $equipos_y_o_herramientas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Inventario $inventario)
+    public function destroy(Equipos_y_o_herramientas $equipos_y_o_herramientas)
     {
         //
     }

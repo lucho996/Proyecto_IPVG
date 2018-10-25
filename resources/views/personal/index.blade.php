@@ -1,29 +1,39 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-
     <title>Personal</title>
     <style>
-		body {
-			width: 1000px;
-			margin: 50px auto;
-		}
 		.badge {
-			float: right;
+            float: right;
+            
 		}
 	</style>
 </head>
+
+<div style="width: 1100px;
+height:100%;
+background: #cccccc;
+padding: 35px;
+margin: 0px auto;">
+
+</div>
+
 <body>
-        <nav class="navbar navbar-default" role="navigation">
+    <div style="width: 1100px; margin:20px auto;">
+    <div style="width: 200px; float:left; position:relative;">
+    @include('intranet.menu')
+    </div>    
+    <div style="width: 850px; float: right; position:relative;">
+            <nav class="navbar navbar-default" role="navigation">
                 <div class="container-fluid">
                     <div class="navbar-header">
                     </div>
-                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <div id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                           <li class="active"><a href="/personal">Todos</a></li>
                           <li><a href="/personal/create">Nuevo</a></li>
@@ -38,7 +48,7 @@
                 </div>
       
                 <div class="panel-body">
-                  <table class="table ">
+                  <table class="table">
                       <thead>
                           <tr>
                               <th>Rut</th>
@@ -48,15 +58,14 @@
                           </tr>
                       </thead>
                       <tbody>
-                          @foreach($personal as $personal)
+                          @foreach($personal as $personal =>$valor)
                               <tr>
-                                  <td>{{ $personal->RUTP }}</td>
-                                  <td>{{ $personal->NOMBREP }}</td>
-                                  <td>{{ $personal->APELLIDOP }}</td>
+                                  <td>{{ $valor->RUTP }}</td>
+                                  <td>{{ $valor->NOMBREP }}</td>
+                                  <td>{{ $valor->APELLIDOP }}</td>
                                   <td>
-                                      <a href="/personal/show/{{ $personal->RUTP }}"><span class="label label-info">Ver</span></a>
-                                      <a href="/personal/edit/{{ $personal->RUTP }}"><span class="label label-success">Editar</span></a>
-                                      <a href="{{ url('/personal/destroy',$personal->RUTP) }}"><span class="label label-danger">Eliminar</span></a>
+                                      <a href="/personal/show/{{ $valor->RUTP }}"><span class="label label-info">Ver</span></a>
+                                      <a href="/personal/edit/{{ $valor->RUTP }}"><span class="label label-success">Editar</span></a>
                                   </td>
                               </tr>
                           @endforeach
@@ -67,6 +76,7 @@
           @if(Session::has('message'))
             <div class="alert alert-{{ Session::get('class') }}">{{ Session::get('message')}}</div>
         @endif
-    
+    </div>
+</div>
 </body>
 </html>

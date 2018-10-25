@@ -25,7 +25,7 @@
               <li><a href="/" >Inicio</a></li>
                 <li><a href="/nosotros">Nosotros</a></li>
                 <li><a href="/contacto">Contacto</a></li>
-                <li><a href="#">Intranet</a></li>
+                <li><a href="intranet/index">Intranet</a></li>
             </div>
             </ul>
         </nav>

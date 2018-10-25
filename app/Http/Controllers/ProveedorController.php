@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Session;
 use App\Proveedor;
 use Illuminate\Http\Request;
 
@@ -43,10 +43,19 @@ class ProveedorController extends Controller
         $proveedor->CIUDAD =$request->Input('ciudad');
         $proveedor->TELEFONO =$request->Input('telefono');
         $proveedor->CORREO =$request->Input('correo');
-       
-        $proveedor->save();
-
-        return redirect()->route('proveedor.index')->with('success','Registro creado satisfactoriamente');
+        try{
+            if($proveedor->save()){
+                Session::flash('message','Guardado Correctamente');
+                Session::flash('class','success');
+            }else{
+                Session::flash('message','Ha ocurrido un error');
+                Session::flash('class','danger');
+            }
+            }catch(\Exception $e) {
+            Session::flash('message','El RUT ingresado ya se encuentra registrado.');
+            Session::flash('class','danger');
+            }
+            return redirect()->route('proveedor.create');       
     }
 
     /**

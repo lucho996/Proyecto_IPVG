@@ -9,21 +9,28 @@
 
     <title>Proveedor</title>
     <style>
-		body {
-			width: 1000px;
-			margin: 50px auto;
-		}
+
 		.badge {
 			float: right;
 		}
 	</style>
 </head>
+<div style="width: 1100px;
+margin: 0px auto;
+background: #cccccc;
+padding: 35px;">
+</div>
 <body>
+        <div style="width: 1100px; margin:20px auto;">
+                <div style="width: 200px; float:left; position:relative;">
+                @include('intranet.menu')
+                </div>    
+                <div style="width: 850px; float: right; position:relative;">
         <nav class="navbar navbar-default" role="navigation">
                 <div class="container-fluid">
                     <div class="navbar-header">
                     </div>
-                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <div  id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                           <li class="active"><a href="/proveedor">Todos</a></li>
                           <li><a href="/proveedor/create">Nuevo</a></li>
@@ -55,7 +62,7 @@
                                   <td>
                                       <a href="/proveedor/show/{{ $proveedor->RUT }}"><span class="label label-info">Ver</span></a>
                                       <a href="/proveedor/edit/{{ $proveedor->RUT }}"><span class="label label-success">Editar</span></a>
-                                      <a href="{{ url('/proveedor/destroy',$proveedor->RUT) }}"><span class="label label-danger">Eliminar</span></a>
+                                      
                                   </td>
                               </tr>
                           @endforeach
@@ -66,6 +73,7 @@
           @if(Session::has('message'))
             <div class="alert alert-{{ Session::get('class') }}">{{ Session::get('message')}}</div>
         @endif
-    
+                </div>
+        </div>
 </body>
 </html>
