@@ -57,7 +57,7 @@
                       </p>
                       <p>
                           <input type="submit" value="Guardar" class="btn btn-success">
-                         
+                          <a href="/clientes" class="btn btn-success">regresar</a>
                       </p>
                       
                
@@ -68,5 +68,6 @@
           <div class="alert alert-{{ Session::get('class') }}">{{ Session::get('message')}}</div>
       @endif
   </form>
+
 </body>
 </html>
