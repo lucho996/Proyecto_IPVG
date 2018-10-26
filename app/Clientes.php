@@ -25,6 +25,7 @@ class Clientes extends Model
      * @var string
      */
     protected $primaryKey = 'RUT_CLIENTE';
+    public $timestamps = false;
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -36,7 +37,7 @@ class Clientes extends Model
     /**
      * @var array
      */
-    protected $fillable = ['NOMBRE_COMPLETO', 'DIRECCION', 'CIUDAD', 'COMUNA', 'GIRO', 'TELEFONO', 'TIPO'];
+    protected $fillable = ['RUT_CLIENTE','NOMBRE_COMPLETO', 'DIRECCION', 'CIUDAD', 'COMUNA', 'GIRO', 'TELEFONO', 'TIPO'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

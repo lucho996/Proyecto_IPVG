@@ -42,12 +42,19 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->hasFile('plano')){
+            $file = $request->file('plano');
+            $name = time().$file->getClientOriginalName();
+            $file->move(public_path().'/planos/',$name);
+           
+        }
+
         $producto = new Producto;
         $producto->RUT_CLIENTE =$request->Input('cliente');
         $producto->DESCRIPCION =$request->Input('descripcion');
         $producto->COD_PETICION_OFERTA =$request->Input('codigo_pet_oferta');
         $producto->TIPO_PRODUCTO =$request->Input('tipo');
-        $producto->PLANO_PRODUCTO =$request->Input('plano');
+        $producto->PLANO_PRODUCTO =$name;
         $producto->FECHA_LLEGADA = Carbon::now();
         $producto->FECHA_RESPUESTA_COTIZACION =$request->Input('fecha_resp_coti');
         $producto->FECHA_DE_ENTREGA_PRODUCTO =$request->Input('fecha_entrega');
@@ -98,7 +105,7 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

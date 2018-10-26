@@ -38,8 +38,9 @@ padding: 35px;">
   		</div>
 
   		<div class="panel-body">
-			  <form  action="{{ action('ProductoController@store')}}" method="post">
+			  <form  action="{{ action('ProductoController@store')}}" method="post" enctype="multipart/form-data">
 					{{ csrf_field() }}
+
 				<p>
 					<select name="cliente" class="form-control" >
 							@foreach($clientes as $cliente)

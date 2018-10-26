@@ -58,8 +58,8 @@ padding: 35px;">
                                   <td>{{ $clientes->NOMBRE_COMPLETO }}</td>
                                   <td>{{ $clientes->TIPO }}</td>
                                   <td>
-                                      <a href="/clientes/show/{{ $clientes->RUTP }}"><span class="label label-info">Ver</span></a>
-                                      <a href="/clientes/edit/{{ $clientes->RUTP }}"><span class="label label-success">Editar</span></a>
+                                      <a href="/clientes/show/{{ $clientes->RUT_CLIENTE }}" ><span class="label label-info">Ver</span></a>
+                                        <a href="/clientes/edit/{{$clientes->RUT_CLIENTE}}"><span class="label label-success">Editar</span></a>
                                   </td>
                               </tr>
                           @endforeach

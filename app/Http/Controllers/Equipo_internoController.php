@@ -17,8 +17,10 @@ class Equipo_internoController extends Controller
      */
     public function index()
     {
+        $inventario = Inventario::all();
+        $producto = Producto::all();
         $equipos_i = Equipos_y_o_herramientas::all();
-        return view('equipos_internos.index')->with('equipos_i',$equipos_i);
+        return view('equipos_internos.index')->with('equipos_i',$equipos_i)->with('inventario',$inventario)->with('producto',$producto);
     }
 
     /**

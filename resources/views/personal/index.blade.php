@@ -58,14 +58,14 @@ margin: 0px auto;">
                           </tr>
                       </thead>
                       <tbody>
-                          @foreach($personal as $personal =>$valor)
+                          @foreach($personal as $personal)
                               <tr>
-                                  <td>{{ $valor->RUTP }}</td>
-                                  <td>{{ $valor->NOMBREP }}</td>
-                                  <td>{{ $valor->APELLIDOP }}</td>
+                                  <td>{{ $personal->RUTP }}</td>
+                                  <td>{{ $personal->NOMBREP }}</td>
+                                  <td>{{ $personal->APELLIDOP }}</td>
                                   <td>
-                                      <a href="/personal/show/{{ $valor->RUTP }}"><span class="label label-info">Ver</span></a>
-                                      <a href="/personal/edit/{{ $valor->RUTP }}"><span class="label label-success">Editar</span></a>
+                                      <a href="/personal/show/{{ $personal->RUTP }}"><span class="label label-info">Ver</span></a>
+                                      <a href="/personal/edit/{{ $personal->RUTP }}"><span class="label label-success">Editar</span></a>
                                   </td>
                               </tr>
                           @endforeach
@@ -73,9 +73,7 @@ margin: 0px auto;">
                   </table>
                 </div>
             </div>
-          @if(Session::has('message'))
-            <div class="alert alert-{{ Session::get('class') }}">{{ Session::get('message')}}</div>
-        @endif
+
     </div>
 </div>
 </body>

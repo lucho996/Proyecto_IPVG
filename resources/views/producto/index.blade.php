@@ -50,6 +50,7 @@ padding: 35px;">
                               <th>Descripción</th>
                               <th>Fecha Entrega</th>
                               <th>Estado</th>
+                              <th>Plano</th>
                               <th>Acciones</th>
                           </tr>
                       </thead>
@@ -61,6 +62,7 @@ padding: 35px;">
                                   <td>{{ $producto->DESCRIPCION }}</td>
                                   <td>{{ $producto->FECHA_DE_ENTREGA_PRODUCTO }}</td>
                                   <td>{{ $producto->ESTADO }}</td>
+                              <td><a href="{{$producto->PLANO_PRODUCTO}}">{{$producto->PLANO_PRODUCTO}}</a></td>
                                   
                                   <td>
                                       <a href="/producto/show/{{ $producto->ID_PRODUCTO }}"><span class="label label-info">Ver</span></a>
@@ -73,9 +75,7 @@ padding: 35px;">
                   </table>
                 </div>
             </div>
-          @if(Session::has('message'))
-            <div class="alert alert-{{ Session::get('class') }}">{{ Session::get('message')}}</div>
-        @endif
+
     </div>
 	</div>
     

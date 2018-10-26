@@ -64,9 +64,13 @@ class ProveedorController extends Controller
      * @param  \App\Proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function show(Proveedor $proveedor)
+    public function show($RUT = null)
     {
-        //
+        $proveedor = Proveedor::where('RUT', $RUT)->first();
+
+        return view('proveedor.show', [
+            'proveedor' => $proveedor,
+        ]);
     }
 
     /**
@@ -75,9 +79,10 @@ class ProveedorController extends Controller
      * @param  \App\Proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Proveedor $proveedor)
+    public function edit($RUT = null)
     {
-        //
+        $proveedor = Proveedor::findOrFail($RUT);
+        return view('proveedor.edit',compact('proveedor'));
     }
 
     /**
@@ -87,9 +92,28 @@ class ProveedorController extends Controller
      * @param  \App\Proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Proveedor $proveedor)
+    public function update(Request $request, $RUT = null)
     {
-        //
+        $proveedor =  Proveedor::find($RUT);
+        $proveedor->RUT =$request->Input('rut');
+        $proveedor->NOMBRE =$request->Input('nombre');
+        $proveedor->DIRECCION =$request->Input('direccion');
+        $proveedor->CIUDAD =$request->Input('ciudad');
+        $proveedor->TELEFONO =$request->Input('telefono');
+        $proveedor->CORREO =$request->Input('correo');
+        try{
+            if($proveedor->save()){
+                Session::flash('message','Guardado Correctamente');
+                Session::flash('class','success');
+            }else{
+                Session::flash('message','Ha ocurrido un error');
+                Session::flash('class','danger');
+            }
+            }catch(\Exception $e) {
+            Session::flash('message','El RUT ingresado ya se encuentra registrado.');
+            Session::flash('class','danger');
+            }
+            return redirect()->route('proveedor.create');  
     }
 
     /**

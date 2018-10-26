@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use View;
 use App\Clientes;
 use Session;
 use Illuminate\Http\Request;
-
 class ClientesController extends Controller
 {
     /**
@@ -67,9 +66,15 @@ class ClientesController extends Controller
      * @param  \App\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function show(Clientes $clientes)
+    public function show($rut =null)
     {
-        //
+        #$clientes = Clientes::where('RUT_CLIENTE')->get();
+        $clientes = Clientes::where('RUT_CLIENTE', $rut)->first();
+
+        return view('clientes.show', [
+            'clientes' => $clientes,
+        ]);
+      
     }
 
     /**
@@ -78,9 +83,11 @@ class ClientesController extends Controller
      * @param  \App\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Clientes $clientes)
+    public function edit($rut = null)
     {
-        //
+     
+        $clientes = Clientes::findOrFail($rut);
+        return view('clientes.edit',compact('clientes'));
     }
 
     /**
@@ -90,10 +97,33 @@ class ClientesController extends Controller
      * @param  \App\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Clientes $clientes)
+    public function update(Request $request, $rut)
     {
-        //
+      
+        $clientes =  Clientes::find($rut);
+
+		
+        $clientes->RUT_CLIENTE =$request->Input('rut');
+        $clientes->NOMBRE_COMPLETO =$request->Input('nombre');
+        $clientes->DIRECCION =$request->Input('direccion');
+        $clientes->CIUDAD =$request->Input('ciudad');
+        $clientes->COMUNA =$request->Input('comuna');
+        $clientes->GIRO =$request->Input('giro');
+        $clientes->TELEFONO =$request->Input('telefono');
+        $clientes->TIPO =$request->Input('tipo');
+       
+		if ($clientes->save()) {
+			Session::flash('message','Actualizado correctamente!');
+			Session::flash('class','success');
+		} else {
+			Session::flash('message','Ha ocurrido un error!');
+			Session::flash('class','danger');
+		}
+
+        return view('clientes.edit',compact('clientes'));
+        
     }
+    
 
     /**
      * Remove the specified resource from storage.

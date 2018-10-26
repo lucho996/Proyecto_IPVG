@@ -75,8 +75,13 @@ class PersonalController extends Controller
      * @param  \App\Personal  $RUTP
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($RUTP = null)
     {
+        $personal = Personal::where('RUTP', $RUTP)->first();
+
+        return view('personal.show', [
+            'personal' => $personal,
+        ]);
         #$persona = Personal::find('RUTP');
 		#return View('personal.show')->with('personal',$persona);
     }
@@ -87,9 +92,10 @@ class PersonalController extends Controller
      * @param  \App\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Personal $personal)
+    public function edit($RUTP = null)
     {
-        //
+        $personal = Personal::findOrFail($RUTP);
+        return view('personal.edit',compact('personal'));
     }
 
     /**
@@ -99,9 +105,31 @@ class PersonalController extends Controller
      * @param  \App\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Personal $personal)
+    public function update(Request $request, $RUTP)
     {
-        //
+        $personal =  Personal::find($RUTP);
+
+		
+        $personal->RUTP =$request->Input('rut');
+        $personal->NOMBREP =$request->Input('nombre');
+        $personal->APELLIDOP =$request->Input('apellido');
+        $personal->TELEFONOP =$request->Input('telefono');
+        $personal->CORREOP =$request->Input('correo');
+        $personal->HORAHOMBRE =$request->Input('hh');
+        $personal->FECHANACIMIENTO =$request->Input('fecha_nac');
+        $personal->DIRECCION =$request->Input('direccion');
+        $personal->TIPO =$request->Input('tipo');
+       
+       
+		if ($personal->save()) {
+			Session::flash('message','Actualizado correctamente!');
+			Session::flash('class','success');
+		} else {
+			Session::flash('message','Ha ocurrido un error!');
+			Session::flash('class','danger');
+		}
+
+        return view('personal.edit',compact('personal'));
     }
 
     /**
