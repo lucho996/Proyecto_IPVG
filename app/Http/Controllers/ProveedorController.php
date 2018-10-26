@@ -113,7 +113,7 @@ class ProveedorController extends Controller
             Session::flash('message','El RUT ingresado ya se encuentra registrado.');
             Session::flash('class','danger');
             }
-            return redirect()->route('proveedor.create');  
+            return view('proveedor.edit',compact('proveedor'));
     }
 
     /**

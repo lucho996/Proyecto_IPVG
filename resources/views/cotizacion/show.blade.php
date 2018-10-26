@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Producto</title>
+	<title>Cotizaciones</title>
 
 	<style>
 		.badge {
@@ -33,40 +33,32 @@
 
 	<div class="panel panel-success">
   		<div class="panel-heading">
-  			<h4>Información Producto</h4>
+  			<h4>Información Cotizaciòn</h4>
   		</div>
 
   		<div class="panel-body">
   			
 				<p>
-					RUT : <strong>{{$producto ->RUTP}}</strong>
+					CLIENTE : <strong>{{$cotizacion ->RUT_CLIENTE}}</strong>
 					</p>
 					<p>
-						NOMBRE: <strong>{{$producto ->NOMBREP}}</strong>
+						COD. PETICIÒN: <strong>{{$cotizacion ->COD_PETICION_OFERTA}}</strong>
 					</p>
 					<p>
-						APELLIDO: <strong>{{$producto ->APELLIDOP}}</strong>
+						FECHA DE COTIZACIÒN: <strong>{{$cotizacion ->FECHA_LLEGADA}}</strong>
 					</p>
 					<p>
-							TELEFONO: <strong>{{$producto ->TELEFONOP}}</strong>
+							FECHA LIMITE DE RESPUESTA: <strong>{{$cotizacion ->FECHA_RESPUESTA_COTIZACION}}</strong>
 						</p>
 						<p>
-								CORREO: <strong>{{$producto ->CORREOP}}</strong>
+								DESCRIPCIÒN: <strong>{{$cotizacion ->DESCRIPCION}}</strong>
 							</p>
 							<p>
-									HORA HOMBRE: <strong>{{$producto ->HORAHOMBRE}}</strong>
+									ESTADO: <strong>{{$cotizacion ->ESTADO}}</strong>
 								</p>
-								<p>
-										FECHA NACIMIENTO: <strong>{{$producto ->FECHANACIMIENTO}}</strong>
-									</p>
-									<p>
-											DIRECCIÒN: <strong>{{$producto ->DIRECCION}}</strong>
-										</p>
-										<p>
-												TIPO: <strong>{{$producto ->TIPO}}</strong>
-											</p>
+								
 
-        <a href="/producto" class="btn btn-default">Regresar</a>
+        <a href="/cotizacion" class="btn btn-default">Regresar</a>
 		</div>
 	</div>
 		</div>

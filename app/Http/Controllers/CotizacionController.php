@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Producto;
 use App\Clientes;
 use App\Cotizacion;
@@ -8,7 +9,7 @@ use Session;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class ProductoController extends Controller
+class CotizacionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,13 +18,9 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $clientes = Clientes::all();
-        $cotizacion = Cotizacion::all();
-        $producto = Producto::orderBy('ID_PRODUCTO','ASC')->get();
-        return view('producto.index')->with('cotizacion',$cotizacion);
-        
+        $cotizacion = Cotizacion::orderBy('ID_COTIZACION','ASC')->get();
+        return view('cotizacion.index')->with('cotizacion',$cotizacion);
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -33,7 +30,7 @@ class ProductoController extends Controller
     public function create()
     {
         $clientes = Clientes::all();
-        return view('producto.create')->with('clientes',$clientes);
+        return view('cotizacion.create')->with('clientes',$clientes);
     }
 
     /**
@@ -57,6 +54,7 @@ class ProductoController extends Controller
         $cotizacion->FECHA_LLEGADA = Carbon::now();
         $cotizacion->FECHA_RESPUESTA_COTIZACION =$request->Input('fecha_resp_coti');
         $cotizacion->DESCRIPCION =$request->Input('descripcion_cot');
+        $cotizacion->ESTADO ="En Espera";
 
 
         $producto->DESCRIPCION =$request->Input('descripcion');
@@ -76,66 +74,55 @@ class ProductoController extends Controller
         Session::flash($e);
         Session::flash('class','danger');
         }
-        return redirect()->route('producto.create');
+        return redirect()->route('cotizacion.create');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Cotizacion  $cotizacion
      * @return \Illuminate\Http\Response
      */
-    public function show($ID_PRODUCTO)
+    public function show( $ID_COTIZACION = null)
     {
-        $producto =  Producto::where('ID_PRODUCTO', $ID_PRODUCTO)->first();
+        $cotizacion =  Cotizacion::where('ID_COTIZACION', $ID_COTIZACION)->first();
 
-        return view('producto.show', [
-            'producto' => $producto,
+        return view('cotizacion.show', [
+            'cotizacion' => $cotizacion,
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Cotizacion  $cotizacion
      * @return \Illuminate\Http\Response
      */
-    public function edit($ID_PRODUCTO = null)
+    public function edit($ID_COTIZACION = null)
     {
         $clientes = Clientes::all();
-        $producto = Producto::findOrFail($ID_PRODUCTO);
-        return view('producto.edit',compact('producto'))->with('clientes',$clientes);
+        $cotizacion = Cotizacion::findOrFail($ID_COTIZACION);
+        return view('cotizacion.edit',compact('cotizacion'))->with('clientes',$clientes);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Cotizacion  $cotizacion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $ID_PRODUCTO = null)
+    public function update(Request $request, $ID_COTIZACION =null)
     {
-
-        if($request->hasFile('plano')){
-            $file = $request->file('plano');
-            $nameE= time().$file->getClientOriginalName();
-            $file->move(public_path().'/planos/',$nameE);
-           
-        }
         $clientes = Clientes::all();
-        $producto =  Producto::find($ID_PRODUCTO);
-        $producto->RUT_CLIENTE =$request->Input('cliente');
-        $producto->DESCRIPCION =$request->Input('descripcion');
-        $producto->COD_PETICION_OFERTA =$request->Input('codigo_pet_oferta');
-        $producto->TIPO_PRODUCTO =$request->Input('tipo');
-        $producto->PLANO_PRODUCTO =$nameE;
-        $producto->FECHA_LLEGADA = Carbon::now();
-        $producto->FECHA_RESPUESTA_COTIZACION =$request->Input('fecha_resp_coti');
-        $producto->FECHA_DE_ENTREGA_PRODUCTO =$request->Input('fecha_entrega');
-        $producto->ESTADO = "Falta Cotización";
+        $cotizacion =  Cotizacion::find($ID_COTIZACION);
+        $cotizacion->RUT_CLIENTE =$request->Input('cliente');
+        $cotizacion->COD_PETICION_OFERTA =$request->Input('codigo_pet_oferta');
+        $cotizacion->FECHA_RESPUESTA_COTIZACION =$request->Input('fecha_resp_coti');
+        $cotizacion->ESTADO =$request->Input('estado');
+        $cotizacion->DESCRIPCION =$request->Input('descripcion_cot');
         try{
-        if($producto->save()){
+        if($cotizacion->save()){
             Session::flash('message','Guardado Correctamente');
             Session::flash('class','success');
         }else{
@@ -146,16 +133,16 @@ class ProductoController extends Controller
         Session::flash($e);
         Session::flash('class','danger');
         }
-        return view('producto.edit',compact('producto'))->with('clientes',$clientes);
+        return view('cotizacion.edit',compact('cotizacion'))->with('clientes',$clientes);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Cotizacion  $cotizacion
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Cotizacion $cotizacion)
     {
         //
     }

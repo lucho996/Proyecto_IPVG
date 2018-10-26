@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Producto</title>
+	<title>Cotizaciones</title>
 	<style>
 
 		.badge {
@@ -25,8 +25,8 @@ padding: 35px;">
   		<div class="container-fluid">
     		<div  id="bs-example-navbar-collapse-1">
       			<ul class="nav navbar-nav">
-        			<li><a href="/producto">Todos</a></li>
-        			<li class="active"><a href="/producto/create">Nuevo</a></li>
+        			<li><a href="/cotizacion">Todos</a></li>
+        			<li class="active"><a href="/cotizacion/create">Nuevo</a></li>
         		</ul>
         	</div>
         </div>
@@ -34,7 +34,7 @@ padding: 35px;">
 
 
 
-			<form  action="{{ action('ProductoController@store')}}" method="post" enctype="multipart/form-data">
+			<form  action="{{ action('CotizacionController@store')}}" method="post" enctype="multipart/form-data">
 					{{ csrf_field() }}
 		<div class="panel panel-success"style="width:100%;">
 				<div class="panel-heading">

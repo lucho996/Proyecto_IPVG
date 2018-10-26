@@ -66,10 +66,10 @@ class ClientesController extends Controller
      * @param  \App\Clientes  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function show($rut =null)
+    public function show($RUT_CLIENTE = null)
     {
         #$clientes = Clientes::where('RUT_CLIENTE')->get();
-        $clientes = Clientes::where('RUT_CLIENTE', $rut)->first();
+        $clientes = Clientes::where('RUT_CLIENTE', $RUT_CLIENTE)->first();
 
         return view('clientes.show', [
             'clientes' => $clientes,

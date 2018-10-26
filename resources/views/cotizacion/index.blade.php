@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Personal</title>
+    <title>Cotizaciones</title>
     <style>
 
 		.badge {
@@ -29,8 +29,8 @@ padding: 35px;">
                     </div>
                   <div  id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                          <li class="active"><a href="/producto">Todos</a></li>
-                          <li><a href="/producto/create">Nuevo</a></li>
+                          <li class="active"><a href="/cotizacion">Todos</a></li>
+                          <li><a href="/cotizacion/create">Nuevo</a></li>
                       </ul>
                   </div>
               </div>
@@ -63,8 +63,9 @@ padding: 35px;">
                              
                                   
                                   <td>
-                                      <a href="/producto/show/{{ $cotizacion->ID_COTIZACION }}"><span class="label label-info">Ver</span></a>
-                                      <a href="/producto/edit/{{ $cotizacion->ID_COTIZACION }}"><span class="label label-success">Editar</span></a>
+                                      <a href="/cotizacion/show/{{ $cotizacion->ID_COTIZACION }}"><span class="label label-info">Ver</span></a>
+                                      <a href="/cotizacion/edit/{{ $cotizacion->ID_COTIZACION }}"><span class="label label-success">Editar</span></a>
+                                      <a href="/producto/verproductos/{{ $cotizacion->ID_COTIZACION }}"><span class="label label-success">Ver Producto</span></a>
                                       
                                   </td>
                               </tr>

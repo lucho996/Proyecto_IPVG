@@ -25,7 +25,7 @@
                     <li><a href="/proveedor">Proveedor</a></li>
                     <li><a href="#">Cotizacion</a>
                     <ul>
-                        <li><a href="/producto">Productos</a></li>
+                        <li><a href="/cotizacion">Solicitud Cotizaciòn</a></li>
                         <li><a href="/equipos_internos">Equipos</a></li>
                         
                     </ul>
